@@ -1,0 +1,311 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1592114822384046379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1221601635073130577}
+  - component: {fileID: 4330683910238442304}
+  m_Layer: 0
+  m_Name: Momentary Button and Door Pair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1221601635073130577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592114822384046379}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5966242422913679837}
+  - {fileID: 346817129274763421}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4330683910238442304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592114822384046379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c49f768723146d981738c42ff183e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectOne: {fileID: 5966242422913679837}
+  objectTwo: {fileID: 346817129274763421}
+--- !u!1001 &3850163272788114326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1221601635073130577}
+    m_Modifications:
+    - target: {fileID: 7467776079650242393, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_Color.b
+      value: 0.16078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776079650242393, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_Color.g
+      value: 0.16078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776079650242393, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_Color.r
+      value: 0.82745105
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800073, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_Name
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+--- !u!95 &5966242422913679836 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7467776080500800074, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+  m_PrefabInstance: {fileID: 3850163272788114326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5966242422913679837 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7467776080500800075, guid: d68aad29cb16b4f659aae60d4c083753, type: 3}
+  m_PrefabInstance: {fileID: 3850163272788114326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6707934799873989225
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1221601635073130577}
+    m_Modifications:
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOff.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOn.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5966242422913679836}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOff.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5966242422913679836}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOn.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOff.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOn.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOff.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: open
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: close
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858163350503226842, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonMomentaryOff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOn.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOff.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOff.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOn.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5966242422913679836}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOff.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5966242422913679836}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOn.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOff.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOn.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOff.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOn.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOff.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: open
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: close
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477627742934404440, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: ButtonToggleOff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787463784774876739, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000000008742277
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275171449933038, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000000008742277
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469275172892914427, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+      propertyPath: m_Name
+      value: Button Momentary
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+--- !u!4 &346817129274763421 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6469275172892914420, guid: e10042cc94d2542a3811bb83e36ff851, type: 3}
+  m_PrefabInstance: {fileID: 6707934799873989225}
+  m_PrefabAsset: {fileID: 0}
