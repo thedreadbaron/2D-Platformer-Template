@@ -106,7 +106,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.48}
-  m_Size: {x: 1.05, y: 0.04}
+  m_Size: {x: 1, y: 0.04}
   m_Direction: 1
 --- !u!61 &-802790329678482149
 BoxCollider2D:
@@ -132,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.05, y: 0.04}
+  m_Size: {x: 1, y: 0.04}
   m_EdgeRadius: 0
 --- !u!251 &7215383774377197603
 PlatformEffector2D:
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f701fbe8d7644f0f964b24021e18066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeDuration: 0.64
   respawnDelay: 2
 --- !u!1 &7233940505645499960
 GameObject:
@@ -326,5 +327,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.05, y: 0.04}
+  m_Size: {x: 1, y: 0.04}
   m_EdgeRadius: 0

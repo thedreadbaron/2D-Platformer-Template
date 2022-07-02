@@ -12,6 +12,7 @@ public class FallingPlatform : MonoBehaviour
     Vector3 startRot;
     private bool triggered = false;
 
+    public float shakeDuration = 0.64f;
     public float respawnDelay = 2f;
 
     private void Awake()
@@ -34,7 +35,7 @@ public class FallingPlatform : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!triggered)
+        if (!triggered && collision.rigidbody.velocity.y < 0f)
         {
                 StartCoroutine(PlatFall());
                 triggered = true;
@@ -51,7 +52,7 @@ public class FallingPlatform : MonoBehaviour
     IEnumerator PlatFall() 
 	{
         animator.SetTrigger("Wiggle");
-		yield return new WaitForSeconds(0.64f);
+		yield return new WaitForSeconds(shakeDuration);
 		rb.bodyType = RigidbodyType2D.Dynamic;
         capsule_collider.enabled = false;
         yield return new WaitForSeconds(respawnDelay);

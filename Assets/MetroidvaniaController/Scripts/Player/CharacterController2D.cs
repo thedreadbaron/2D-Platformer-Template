@@ -8,7 +8,9 @@ public class CharacterController2D : MonoBehaviour
 	PlayerAudioEvents audioController;
 	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
+	private float ice_smoothing = 0f;
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
+	[Range(0, .3f)] [SerializeField] private float m_AirControlSmoothing = .17f;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_WallCheck;								//Posicion que controla si el personaje toca una pared
@@ -188,10 +190,10 @@ public class CharacterController2D : MonoBehaviour
 				// Move the character by finding the target velocity
 				Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
 				// And then smoothing it out and applying it to the character
-				if (m_Grounded && targetVelocity.magnitude + 1f > m_Rigidbody2D.velocity.magnitude)
-				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
+				if (m_Grounded && move != 0)
+				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing + ice_smoothing);
 				else if (!m_Grounded)
-				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
+				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing + m_AirControlSmoothing);
 
 				// If the input is moving the player right and the player is facing left...
 				if (move > 0 && !m_FacingRight && !isWallSliding)
@@ -345,6 +347,22 @@ public class CharacterController2D : MonoBehaviour
 				StartCoroutine(Stun(0.25f));
 				StartCoroutine(MakeInvincible(1f));
 			}
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.tag == "Ice")
+		{
+			ice_smoothing = 0.3f;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.gameObject.tag == "Ice")
+		{
+			ice_smoothing = 0f;
 		}
 	}
 

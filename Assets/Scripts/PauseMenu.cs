@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PauseMenu : MonoBehaviour
 {
     private GameObject pausedText;
-    private GameObject clickText;
+    //private GameObject clickText;
     bool initialClick = true;
 
     //public AudioSource bgm;
@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pausedText = transform.GetChild(0).gameObject;
-        clickText = transform.GetChild(1).gameObject;
+        //clickText = transform.GetChild(1).gameObject;
         //Time.timeScale = 0;
         //clickText.SetActive(true);
     }
@@ -41,7 +41,7 @@ public class PauseMenu : MonoBehaviour
 			if (mouse.leftButton.wasPressedThisFrame) 
             {    
                 //bgmEmitter.Play();
-                clickText.SetActive(false);
+                //clickText.SetActive(false);
                 initialClick = true;
                 ResumeGame();
             }
