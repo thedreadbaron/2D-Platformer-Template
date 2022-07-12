@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 4660076856243598}
   - component: {fileID: 4660076856243599}
   - component: {fileID: 4660076856243600}
+  - component: {fileID: 4660076856243592}
   m_Layer: 1
   m_Name: Player
   m_TagString: Player
@@ -106,19 +107,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 1000
-  m_MovementSmoothing: 0.08
+  m_MovementSmoothing: 0.1
   m_AirControl: 1
+  m_AirControlSmoothing: 0.15
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 840
   m_GroundCheck: {fileID: 8630892215885956239}
   m_WallCheck: {fileID: 8636108560769128243}
-  m_Grounded: 0
+  m_Grounded: 1
   slippery: {fileID: 6200000, guid: 73035f974857c94489896440d1e2b9e8, type: 2}
   grippy: {fileID: 6200000, guid: d066c2ceccc6e49f2adb89161f95ca62, type: 2}
   velocityBeforePhysicsUpdate: {x: 0, y: 0}
   canDoubleJump: 0
-  m_DashForce: 25
+  m_DashForce: 10
   life: 10
   invincible: 0
   particleJumpUp: {fileID: 8433458779778562999}
@@ -127,7 +129,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8529165564478018475}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnFall
         m_Mode: 1
         m_Arguments:
@@ -142,7 +144,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8529165564478018475}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnLanding
         m_Mode: 1
         m_Arguments:
@@ -210,7 +212,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 96be36fcbc69e8944b5d9f089bc07112, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 88c4c5568c8818144997a74fca09a498, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -271,7 +273,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 8632500430307428359}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d066c2ceccc6e49f2adb89161f95ca62, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -306,7 +308,7 @@ MonoBehaviour:
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
+  m_SplitScreenIndex: 0
   m_Camera: {fileID: 0}
 --- !u!82 &4660076856243599
 AudioSource:
@@ -321,7 +323,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.1985655
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -420,6 +422,23 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bcf07154c234f421ea31845a84d40f77, type: 3}
   - {fileID: 8300000, guid: 635c15587eee641f881a0f6af7db7fc7, type: 3}
   jump: {fileID: 8300000, guid: 6b4318e8c46fddf44b9ea7261b120b50, type: 3}
+  dash: {fileID: 8300000, guid: aa5afae48f35c5f4183d4837e5be751f, type: 3}
+--- !u!114 &4660076856243592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8632500430307428359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573c54da250584103a0f807824a4986d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupCount: 0
+  pickupSound: {fileID: 0}
+  pickupText: {fileID: 0}
+  pickupAnimator: {fileID: 0}
 --- !u!1 &8632515420757100013
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public CharacterController2D controller;
 	public Animator animator;
-	private PlayerControls playerControls;
+	public PlayerControls playerControls;
 
 	public float runSpeed = 40f;
 

@@ -29,8 +29,8 @@ public class PickupCube : MonoBehaviour
     {
         if (col.gameObject == Player)
         {
-            col.GetComponent<Inventory>().PickupCountIncrease(1);
-            col.GetComponent<Inventory>().pickupSound.Play();
+            Player.GetComponent<Inventory>().PickupCountIncrease(1);
+            Player.GetComponent<Inventory>().pickupSound.Play();
             Destroy(this.gameObject);
         }
     }

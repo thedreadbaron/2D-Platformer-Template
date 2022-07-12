@@ -6,6 +6,7 @@ public class Platform : MonoBehaviour
 {
     GameObject Player;
     private CapsuleCollider2D capsule_collider;
+
     private void Awake()
     {
         capsule_collider = GetComponent<CapsuleCollider2D>();

@@ -6,7 +6,8 @@ public class BouncyPlatform : MonoBehaviour
 {
     GameObject Player;
     private AudioSource audioSource;
-    // Start is called before the first frame update
+    public float upwardForce = 70f;
+
     void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -17,7 +18,7 @@ public class BouncyPlatform : MonoBehaviour
     {
         if (collision.rigidbody.velocity.y < 0.1f)
         {
-            collision.rigidbody.AddForce(transform.up * 50f, ForceMode2D.Impulse);
+            collision.rigidbody.AddForce(new Vector2(0, upwardForce), ForceMode2D.Impulse);
             audioSource.pitch = (Random.Range(0.9f, 1.1f));
             audioSource.Play();
         }

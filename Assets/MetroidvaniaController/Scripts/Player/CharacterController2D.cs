@@ -7,10 +7,10 @@ public class CharacterController2D : MonoBehaviour
 {
 	PlayerAudioEvents audioController;
 	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
-	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
+	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .1f;	// How much to smooth out the movement
 	private float ice_smoothing = 0f;
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
-	[Range(0, .3f)] [SerializeField] private float m_AirControlSmoothing = .17f;
+	[Range(0, .3f)] [SerializeField] private float m_AirControlSmoothing = .15f;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_WallCheck;								//Posicion que controla si el personaje toca una pared
@@ -20,11 +20,11 @@ public class CharacterController2D : MonoBehaviour
 	public bool m_Grounded;            // Whether or not the player is grounded.
 	private Rigidbody2D m_Rigidbody2D;
 	private CapsuleCollider2D capsule_collider;
-	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+	public bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
 	private float limitFallSpeed = 25f; // Limit fall speed
-	private float limitJumpSpeed = 25f;
-	private float limitHorizontalSpeed = 15f;
+	//private float limitJumpSpeed = 50f;
+	private float limitHorizontalSpeed = 25f;
 	private Collider2D collider_2D;
 	public PhysicsMaterial2D slippery;
 	public PhysicsMaterial2D grippy;
@@ -166,23 +166,25 @@ public class CharacterController2D : MonoBehaviour
 	public void Move(float move, bool jump, bool dash, bool crouch)
 	{
 		if (canMove) {
-			if (dash && canDash && !isWallSliding)
+			if (!m_Grounded && crouch && canDash && !isWallSliding)
 			{
-				//m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_DashForce, 0f));
+				m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_DashForce, -m_DashForce/3f),ForceMode2D.Impulse);
+				particleJumpUp.Play();
 				StartCoroutine(DashCooldown());
 			}
 			// If crouching, check to see if the character can stand up
 			if (isDashing)
 			{
-				m_Rigidbody2D.velocity = new Vector2(transform.localScale.x * m_DashForce, 0);
+				//m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_DashForce, -m_DashForce), ForceMode2D.Force);
+				//m_Rigidbody2D.velocity = new Vector2(transform.localScale.x * m_DashForce, -m_DashForce);
 			}
 			//only control the player if grounded or airControl is turned on
-			else if (m_Grounded || m_AirControl)
+			else if (m_Grounded || m_AirControl )
 			{
-				if (m_Rigidbody2D.velocity.y < -limitFallSpeed)
+				if (m_Rigidbody2D.velocity.y < -limitFallSpeed && !isDashing)
 					m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, -limitFallSpeed);
-				if (m_Rigidbody2D.velocity.y > limitJumpSpeed)
-					m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, limitJumpSpeed);
+				//if (m_Rigidbody2D.velocity.y > limitJumpSpeed)
+					//m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, limitJumpSpeed);
 				if (m_Rigidbody2D.velocity.x > limitHorizontalSpeed)
 					m_Rigidbody2D.velocity = new Vector2(limitHorizontalSpeed, m_Rigidbody2D.velocity.y);
 				if (m_Rigidbody2D.velocity.x < -limitHorizontalSpeed)
@@ -190,7 +192,7 @@ public class CharacterController2D : MonoBehaviour
 				// Move the character by finding the target velocity
 				Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
 				// And then smoothing it out and applying it to the character
-				if (m_Grounded && move != 0)
+				if ((m_Grounded && move != 0) || coyote_time)
 				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing + ice_smoothing);
 				else if (!m_Grounded)
 				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing + m_AirControlSmoothing);
@@ -318,7 +320,7 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	private void Flip()
+	public void Flip()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
