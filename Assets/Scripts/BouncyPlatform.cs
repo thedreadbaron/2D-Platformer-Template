@@ -6,7 +6,7 @@ public class BouncyPlatform : MonoBehaviour
 {
     GameObject Player;
     private AudioSource audioSource;
-    public float upwardForce = 70f;
+    public float upwardForce = 30f;
 
     void Awake()
     {

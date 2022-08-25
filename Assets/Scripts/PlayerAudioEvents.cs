@@ -32,6 +32,12 @@ public class PlayerAudioEvents : MonoBehaviour
         audioSource.volume = 1f;
         audioSource.PlayOneShot(jump);
     }
+    public void PlayAudioDoubleJump()
+    {
+        audioSource.pitch = (Random.Range(1.2f, 1.4f));
+        audioSource.volume = 1f;
+        audioSource.PlayOneShot(jump);
+    }
     public void PlayAudioDash()
     {
         audioSource.pitch = (Random.Range(0.9f, 1.1f));
