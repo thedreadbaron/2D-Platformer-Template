@@ -21,6 +21,11 @@ public class BouncyPlatform : MonoBehaviour
             collision.rigidbody.AddForce(new Vector2(0, upwardForce), ForceMode2D.Impulse);
             audioSource.pitch = (Random.Range(0.9f, 1.1f));
             audioSource.Play();
+            if (collision.gameObject.CompareTag("Player"))
+                {
+                Player.GetComponent<CharacterController2D>().isBounced = true;
+                }
         }
+        
     }
 }

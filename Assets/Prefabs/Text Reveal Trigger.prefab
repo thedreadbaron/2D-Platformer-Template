@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5331411877628767969}
   - component: {fileID: 5331411877628767968}
   - component: {fileID: 8899440420935466104}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 5331411877868788912}
   - component: {fileID: 5331411877868788913}
   - component: {fileID: 5331411877868788927}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text Reveal Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

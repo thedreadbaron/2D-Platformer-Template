@@ -33,7 +33,7 @@ public class RespawnController : MonoBehaviour
         }
         else if (!fade && p < 1f)
         {
-            p += 1.5f * Time.deltaTime;
+            p += 1.0f * Time.deltaTime;
         }
     }
 
@@ -55,9 +55,11 @@ public class RespawnController : MonoBehaviour
         virtualCamera.PreviousStateIsValid = false;
         fade = false;
         particleImplode.Play();
+        Player.GetComponent<SpriteRenderer>().enabled = true;
+        Player.GetComponent<Animator>().SetBool("FadeIn", true);
         if (Player.GetComponent<CharacterController2D>().m_FacingRight == false) Player.GetComponent<CharacterController2D>().Flip();
         yield return new WaitForSeconds(0.5f);
-        Player.GetComponent<SpriteRenderer>().enabled = true;
         Player.GetComponent<PlayerMovement>().playerControls.Enable();
+        Player.GetComponent<Animator>().SetBool("FadeIn", false);
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7467776079650242393}
   - component: {fileID: 7467776079650242392}
   - component: {fileID: 7467776079650242375}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: Physical Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7467776080500800075}
   - component: {fileID: 7467776080500800074}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
