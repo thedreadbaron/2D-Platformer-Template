@@ -17,7 +17,6 @@ public class JumpStateBehaviour : StateMachineBehaviour
             //audioSource = animator.transform.GetComponent<AudioSource>();
             //audioSource.clip = audioJump;
             //audioSource.Play();
-            //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Player/Jump");
         }
     }
 

@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour {
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool jumpPress = false;
-	bool dash = false;
 	public bool crouch = false;
 	Vector2 move;
 
@@ -101,9 +100,7 @@ public class PlayerMovement : MonoBehaviour {
 			//dash = true;
 		//}
 		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, jump, dash, crouch, jumpPress);
-		//jump = false;
-		dash = false;
+		controller.Move(horizontalMove * Time.fixedDeltaTime, jump, crouch, jumpPress);
 		jumpPress = false;
 	}
 }

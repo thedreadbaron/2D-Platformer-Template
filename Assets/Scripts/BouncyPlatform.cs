@@ -24,6 +24,7 @@ public class BouncyPlatform : MonoBehaviour
             if (collision.gameObject.CompareTag("Player"))
                 {
                 Player.GetComponent<CharacterController2D>().isBounced = true;
+                Player.GetComponent<CharacterController2D>().canDoubleJump = true;
                 }
         }
         

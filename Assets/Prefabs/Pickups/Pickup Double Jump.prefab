@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2665614308198926936}
   - component: {fileID: 3133275564254356548}
   m_Layer: 11
-  m_Name: Double Jump Pickup
+  m_Name: Pickup Double Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
