@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 3529842944871205485}
   - component: {fileID: -802790329678482149}
   - component: {fileID: -5685712197820469488}
+  - component: {fileID: -7391492293164415803}
   m_Layer: 6
   m_Name: Slippery Platform
   m_TagString: Ice
@@ -220,3 +221,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6399743f30dbf443293a38388dc7780e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7391492293164415803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215383774377197601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dac87669808e4ca38ec7b111af1c318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentName: Slippery Platforms

@@ -38,10 +38,12 @@ public class CharacterController2D : MonoBehaviour
 
 	public bool canDoubleJump = true; //If player can double jump
 	public bool isBounced = false;
+	private bool movingAwayFromWall = false;
 	private bool canJump = true;
 	private bool coyote_time = false;
 	[SerializeField] private float m_DashForce = 25f;
 	private bool canDash = true;
+	private bool canDashPlat = true;
 	private bool isDashing = false; //If player is dashing
 	private bool isDoubleJumping = false;
 	private bool m_IsWall = false; //If there is a wall in front of the player
@@ -178,23 +180,18 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	public void Move(float move, bool jump, bool crouch, bool jumpPress)
+	public void Move(float move, bool jump, bool jumpPress, bool jumpBuffer, bool crouch, bool crouchPress, bool dash, bool dashPress, bool dashBuffer)
 	{
 		if (canMove) {
-			if (_ToggleDash && !m_Grounded && crouch && canDash && !isWallSliding && !oldWallSliding && move != 0 && !m_IsWall)
-			{
-				m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_DashForce, -m_DashForce/3f),ForceMode2D.Impulse);
+			if (_ToggleDash && !m_Grounded && dashBuffer && canDash && canDashPlat && !isWallSliding && m_Rigidbody2D.velocity.y < 15)
+			{	
+				m_Rigidbody2D.velocity = new Vector2(0, 0);
+				m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_DashForce, -m_DashForce/15), ForceMode2D.Impulse);
 				particleJumpUp.Play();
 				StartCoroutine(DashCooldown());
 			}
-			if (isDashing && m_Grounded)
-			{
-				//m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_DashForce, -m_DashForce), ForceMode2D.Force);
-				//m_Rigidbody2D.velocity = new Vector2(transform.localScale.x * m_DashForce, -m_DashForce);
-				isDashing = false;
-			}
 			//only control the player if grounded or airControl is turned on
-			else if (m_Grounded || m_AirControl )
+			if (m_Grounded || m_AirControl )
 			{
 				if (m_Rigidbody2D.velocity.y < -limitFallSpeed && !isDashing)
 					m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, -limitFallSpeed);
@@ -205,7 +202,7 @@ public class CharacterController2D : MonoBehaviour
 				if (m_Rigidbody2D.velocity.x < -limitHorizontalSpeed)
 					m_Rigidbody2D.velocity = new Vector2(-limitHorizontalSpeed, m_Rigidbody2D.velocity.y);
 				// Move the character by finding the target velocity
-				Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+				Vector3 targetVelocity = new Vector2(move * 10, m_Rigidbody2D.velocity.y);
 				// And then smoothing it out and applying it to the character
 				if ((m_Grounded && move != 0) || coyote_time || isDoubleJumping)
 				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing + ice_smoothing);
@@ -249,7 +246,7 @@ public class CharacterController2D : MonoBehaviour
 			}
 
 			// If the player should jump...
-			if ((m_Grounded || coyote_time) && jumpPress && canJump)
+			if ((m_Grounded || coyote_time) && jumpBuffer && canJump)
 			{
 				// Add a vertical force to the player.
 				animator.SetBool("IsJumping", true);
@@ -263,12 +260,12 @@ public class CharacterController2D : MonoBehaviour
 				particleJumpUp.Play();
 				audioController.PlayAudioJump();
 			}
-			else if (_ToggleDoubleJump && !m_Grounded && jumpPress && canDoubleJump && !isWallSliding)
+			else if (_ToggleDoubleJump && !m_Grounded && jumpPress && canDoubleJump && !isWallSliding && m_Rigidbody2D.velocity.y < 15)
 			{
 				canDoubleJump = false;
 				StartCoroutine(DoubleJumpCooldown());
 				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
-				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 1.2f));
+				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 60), ForceMode2D.Impulse);
 				animator.SetBool("IsDoubleJumping", true);
 				audioController.PlayAudioDoubleJump();
 				particleJumpDown.Play();
@@ -278,7 +275,7 @@ public class CharacterController2D : MonoBehaviour
 
 			else if (_ToggleWallSlide && m_IsWall && !m_Grounded)
 			{
-				if (!oldWallSliding && m_Rigidbody2D.velocity.y < 0 || isDashing)
+				if (!oldWallSliding || isDashing)
 				{
 					isWallSliding = true;
 					m_WallCheck.localPosition = new Vector3(-m_WallCheck.localPosition.x, m_WallCheck.localPosition.y, 0);
@@ -287,7 +284,7 @@ public class CharacterController2D : MonoBehaviour
 					canDoubleJump = true;
 					canDash = true;
 					animator.SetBool("IsWallSliding", true);
-					m_Rigidbody2D.velocity = new Vector2(0, 0);
+					m_Rigidbody2D.velocity = new Vector2(-transform.localScale.x * 2, m_Rigidbody2D.velocity.y);
 				}
 				isDashing = false;
 
@@ -296,15 +293,18 @@ public class CharacterController2D : MonoBehaviour
 					if (move * transform.localScale.x > 0.1f)
 					{
 						StartCoroutine(WaitToEndSliding());
+						movingAwayFromWall = true;
 					}
-					if (crouch)
+					else if (crouch)
 					{
 						oldWallSliding = true;
+						m_Rigidbody2D.velocity = new Vector2(-transform.localScale.x * 2, m_Rigidbody2D.velocity.y);
 					}
 					else 
 					{
 						oldWallSliding = true;
-						m_Rigidbody2D.velocity = new Vector2(-transform.localScale.x * 2, -5);
+						m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, new Vector2(-transform.localScale.x * 2, -3), ref velocity, 0.2f);
+						movingAwayFromWall = false;
 					}
 				}
 
@@ -325,7 +325,7 @@ public class CharacterController2D : MonoBehaviour
 					m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
 					//canMove = false;
 				}
-				/*else if (crouch && canDash)
+				/*else if (dashPress && canDash)
 				{
 					isWallSliding = false;
 					animator.SetBool("IsWallSliding", false);
@@ -406,6 +406,13 @@ public class CharacterController2D : MonoBehaviour
 		//canDash = true;
 	}
 
+	public IEnumerator PlatFallDashCooldown()
+	{
+		canDashPlat = false;
+		yield return new WaitForSeconds(0.2f);
+		canDashPlat = true;
+	}
+
 	IEnumerator Stun(float time) 
 	{
 		canMove = false;
@@ -435,12 +442,21 @@ public class CharacterController2D : MonoBehaviour
 	IEnumerator WaitToEndSliding()
 	{
 		yield return new WaitForSeconds(0.1f);
+
+		if (movingAwayFromWall)
+		{
 		m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
+		}
+		
 		yield return new WaitForSeconds(0.02f);
+		
+		if (movingAwayFromWall)
+		{
 		canDoubleJump = true;
 		isWallSliding = false;
 		animator.SetBool("IsWallSliding", false);
 		oldWallSliding = false;
+		}
 		
 	}
 

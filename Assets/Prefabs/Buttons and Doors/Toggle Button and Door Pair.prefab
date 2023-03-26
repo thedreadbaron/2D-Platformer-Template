@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1221601635073130577}
   - component: {fileID: 6105662200812338343}
+  - component: {fileID: 8670837202064089925}
   m_Layer: 0
   m_Name: Toggle Button and Door Pair
   m_TagString: Untagged
@@ -48,6 +49,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectOne: {fileID: 5966242422913679837}
   objectTwo: {fileID: 829328322147989767}
+--- !u!114 &8670837202064089925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592114822384046379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dac87669808e4ca38ec7b111af1c318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentName: Doors and Buttons
 --- !u!1001 &3850163272788114326
 PrefabInstance:
   m_ObjectHideFlags: 0

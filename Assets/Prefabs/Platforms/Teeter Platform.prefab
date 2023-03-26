@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 6544810717628070101}
   - component: {fileID: 6544810717628070103}
   - component: {fileID: 6544810717628070100}
+  - component: {fileID: -908584897535933439}
   m_Layer: 6
   m_Name: Teeter Platform
   m_TagString: Untagged
@@ -388,3 +389,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-908584897535933439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6544810717628070057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dac87669808e4ca38ec7b111af1c318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentName: Teeter Platforms

@@ -27,9 +27,9 @@ public class RespawnController : MonoBehaviour
         {
             p = 1f;
         }
-        else if (fade && p > 0.2f)
+        else if (fade && p > 0.33f)
         {
-            p -= 0.5f * Time.deltaTime;
+            p -= 0.4f * Time.deltaTime;
         }
         else if (!fade && p < 1f)
         {

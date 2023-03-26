@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 575161475}
   - component: {fileID: 332616185933691102}
   - component: {fileID: 903798904209334287}
+  - component: {fileID: -7030252597564940097}
   m_Layer: 6
   m_Name: Moving Platform Physics
   m_TagString: Platform
@@ -589,3 +590,16 @@ MonoBehaviour:
   line: {fileID: 394114273}
   StartPoint: {fileID: 4643571544832479476}
   EndPoint: {fileID: 322310367}
+--- !u!114 &-7030252597564940097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5007121421866538248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dac87669808e4ca38ec7b111af1c318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentName: Moving Platforms

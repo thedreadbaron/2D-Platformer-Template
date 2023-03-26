@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7215383774377197603}
   - component: {fileID: 6778953520809668720}
   - component: {fileID: 8290603748058965599}
+  - component: {fileID: -1526124900227781436}
   m_Layer: 0
   m_Name: Bouncy Platform
   m_TagString: Platform
@@ -232,3 +233,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upwardForce: 70
+--- !u!114 &-1526124900227781436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215383774377197601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dac87669808e4ca38ec7b111af1c318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentName: Bouncy Platforms

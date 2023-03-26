@@ -27,9 +27,10 @@ public class FallingPlatform : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject == Player && col.GetComponent<PlayerMovement>().crouch)
+        if (col.gameObject == Player && Player.GetComponent<PlayerMovement>().crouch && capsule_collider.enabled)
         {
                 StartCoroutine(DropThrough());
+                StartCoroutine(Player.GetComponent<CharacterController2D>().PlatFallDashCooldown());
         }
     }
 
