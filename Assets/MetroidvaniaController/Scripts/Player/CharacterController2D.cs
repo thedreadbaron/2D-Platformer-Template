@@ -90,7 +90,7 @@ public class CharacterController2D : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		velocityBeforePhysicsUpdate = m_Rigidbody2D.velocity;
+		velocityBeforePhysicsUpdate = m_Rigidbody2D.linearVelocity;
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -131,7 +131,7 @@ public class CharacterController2D : MonoBehaviour
 					m_IsWall = true;
 				}
 			}
-			prevVelocityX = m_Rigidbody2D.velocity.x;
+			prevVelocityX = m_Rigidbody2D.linearVelocity.x;
 		}
 		else {
 			capsule_collider.size = new Vector2(0.8f, 1.7f);
@@ -143,7 +143,7 @@ public class CharacterController2D : MonoBehaviour
 			StartCoroutine(Coyote());
 		}
 
-		if (!m_Grounded && m_Rigidbody2D.velocity.y > 0)
+		if (!m_Grounded && m_Rigidbody2D.linearVelocity.y > 0)
 		{
 			groundCheckToggle = false;
 		}
@@ -183,9 +183,9 @@ public class CharacterController2D : MonoBehaviour
 	public void Move(float move, bool jump, bool jumpPress, bool jumpBuffer, bool crouch, bool crouchPress, bool dash, bool dashPress, bool dashBuffer)
 	{
 		if (canMove) {
-			if (_ToggleDash && !m_Grounded && dashBuffer && canDash && canDashPlat && !isWallSliding && m_Rigidbody2D.velocity.y < 15)
+			if (_ToggleDash && !m_Grounded && dashBuffer && canDash && canDashPlat && !isWallSliding && m_Rigidbody2D.linearVelocity.y < 15)
 			{	
-				m_Rigidbody2D.velocity = new Vector2(0, 0);
+				m_Rigidbody2D.linearVelocity = new Vector2(0, 0);
 				m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_DashForce, -m_DashForce/15), ForceMode2D.Impulse);
 				particleJumpUp.Play();
 				StartCoroutine(DashCooldown());
@@ -193,21 +193,21 @@ public class CharacterController2D : MonoBehaviour
 			//only control the player if grounded or airControl is turned on
 			if (m_Grounded || m_AirControl )
 			{
-				if (m_Rigidbody2D.velocity.y < -limitFallSpeed && !isDashing)
-					m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, -limitFallSpeed);
+				if (m_Rigidbody2D.linearVelocity.y < -limitFallSpeed && !isDashing)
+					m_Rigidbody2D.linearVelocity = new Vector2(m_Rigidbody2D.linearVelocity.x, -limitFallSpeed);
 				//if (m_Rigidbody2D.velocity.y > limitJumpSpeed)
 					//m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, limitJumpSpeed);
-				if (m_Rigidbody2D.velocity.x > limitHorizontalSpeed)
-					m_Rigidbody2D.velocity = new Vector2(limitHorizontalSpeed, m_Rigidbody2D.velocity.y);
-				if (m_Rigidbody2D.velocity.x < -limitHorizontalSpeed)
-					m_Rigidbody2D.velocity = new Vector2(-limitHorizontalSpeed, m_Rigidbody2D.velocity.y);
+				if (m_Rigidbody2D.linearVelocity.x > limitHorizontalSpeed)
+					m_Rigidbody2D.linearVelocity = new Vector2(limitHorizontalSpeed, m_Rigidbody2D.linearVelocity.y);
+				if (m_Rigidbody2D.linearVelocity.x < -limitHorizontalSpeed)
+					m_Rigidbody2D.linearVelocity = new Vector2(-limitHorizontalSpeed, m_Rigidbody2D.linearVelocity.y);
 				// Move the character by finding the target velocity
-				Vector3 targetVelocity = new Vector2(move * 10, m_Rigidbody2D.velocity.y);
+				Vector3 targetVelocity = new Vector2(move * 10, m_Rigidbody2D.linearVelocity.y);
 				// And then smoothing it out and applying it to the character
 				if ((m_Grounded && move != 0) || coyote_time || isDoubleJumping)
-				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing + ice_smoothing);
+				m_Rigidbody2D.linearVelocity = Vector3.SmoothDamp(m_Rigidbody2D.linearVelocity, targetVelocity, ref velocity, m_MovementSmoothing + ice_smoothing);
 				else if (!m_Grounded)
-				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing + m_AirControlSmoothing);
+				m_Rigidbody2D.linearVelocity = Vector3.SmoothDamp(m_Rigidbody2D.linearVelocity, targetVelocity, ref velocity, m_MovementSmoothing + m_AirControlSmoothing);
 
 				// If the input is moving the player right and the player is facing left...
 				if (move > 0 && !m_FacingRight && !isWallSliding)
@@ -223,7 +223,7 @@ public class CharacterController2D : MonoBehaviour
 				}
 			}
 
-			if (!jump && !m_Grounded && m_Rigidbody2D.velocity.y > 0 && !isBounced)
+			if (!jump && !m_Grounded && m_Rigidbody2D.linearVelocity.y > 0 && !isBounced)
 			{
 				m_Rigidbody2D.gravityScale = 9f;
 			}
@@ -253,18 +253,18 @@ public class CharacterController2D : MonoBehaviour
 				animator.SetBool("JumpUp", true);
 				m_Grounded = false;
 				StartCoroutine(JumpCooldown());
-				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
+				m_Rigidbody2D.linearVelocity = new Vector2(m_Rigidbody2D.linearVelocity.x, 0);
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 				canDoubleJump = true;
 				particleJumpDown.Play();
 				particleJumpUp.Play();
 				audioController.PlayAudioJump();
 			}
-			else if (_ToggleDoubleJump && !m_Grounded && jumpPress && canDoubleJump && !isWallSliding && m_Rigidbody2D.velocity.y < 15)
+			else if (_ToggleDoubleJump && !m_Grounded && jumpPress && canDoubleJump && !isWallSliding && m_Rigidbody2D.linearVelocity.y < 15)
 			{
 				canDoubleJump = false;
 				StartCoroutine(DoubleJumpCooldown());
-				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
+				m_Rigidbody2D.linearVelocity = new Vector2(m_Rigidbody2D.linearVelocity.x, 0);
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 60), ForceMode2D.Impulse);
 				animator.SetBool("IsDoubleJumping", true);
 				audioController.PlayAudioDoubleJump();
@@ -284,7 +284,7 @@ public class CharacterController2D : MonoBehaviour
 					canDoubleJump = true;
 					canDash = true;
 					animator.SetBool("IsWallSliding", true);
-					m_Rigidbody2D.velocity = new Vector2(-transform.localScale.x * 2, m_Rigidbody2D.velocity.y);
+					m_Rigidbody2D.linearVelocity = new Vector2(-transform.localScale.x * 2, m_Rigidbody2D.linearVelocity.y);
 				}
 				isDashing = false;
 
@@ -298,12 +298,12 @@ public class CharacterController2D : MonoBehaviour
 					else if (crouch)
 					{
 						oldWallSliding = true;
-						m_Rigidbody2D.velocity = new Vector2(-transform.localScale.x * 2, m_Rigidbody2D.velocity.y);
+						m_Rigidbody2D.linearVelocity = new Vector2(-transform.localScale.x * 2, m_Rigidbody2D.linearVelocity.y);
 					}
 					else 
 					{
 						oldWallSliding = true;
-						m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, new Vector2(-transform.localScale.x * 2, -3), ref velocity, 0.2f);
+						m_Rigidbody2D.linearVelocity = Vector3.SmoothDamp(m_Rigidbody2D.linearVelocity, new Vector2(-transform.localScale.x * 2, -3), ref velocity, 0.2f);
 						movingAwayFromWall = false;
 					}
 				}
@@ -314,7 +314,7 @@ public class CharacterController2D : MonoBehaviour
 					animator.SetBool("IsJumping", true);
 					animator.SetBool("JumpUp", true);
 					audioController.PlayAudioJump();
-					m_Rigidbody2D.velocity = new Vector2(0f, 0f);
+					m_Rigidbody2D.linearVelocity = new Vector2(0f, 0f);
 					m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_JumpForce * 0.5f, m_JumpForce));
 					//jumpWallStartX = transform.position.x;
 					//limitVelOnWallJump = true;
@@ -365,7 +365,7 @@ public class CharacterController2D : MonoBehaviour
 			animator.SetBool("Hit", true);
 			life -= damage;
 			Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f ;
-			m_Rigidbody2D.velocity = Vector2.zero;
+			m_Rigidbody2D.linearVelocity = Vector2.zero;
 			m_Rigidbody2D.AddForce(damageDir * 10);
 			if (life <= 0)
 			{
@@ -467,7 +467,7 @@ public class CharacterController2D : MonoBehaviour
 		invincible = true;
 		GetComponent<Attack>().enabled = false;
 		yield return new WaitForSeconds(0.4f);
-		m_Rigidbody2D.velocity = new Vector2(0, m_Rigidbody2D.velocity.y);
+		m_Rigidbody2D.linearVelocity = new Vector2(0, m_Rigidbody2D.linearVelocity.y);
 		yield return new WaitForSeconds(1.1f);
 		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
 	}

@@ -36,7 +36,7 @@ public class FallingPlatform : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!triggered && collision.rigidbody.velocity.y < 0f)
+        if (!triggered && collision.rigidbody.linearVelocity.y < 0f)
         {
                 StartCoroutine(PlatFall());
                 triggered = true;

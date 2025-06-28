@@ -16,7 +16,7 @@ public class BouncyPlatform : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.rigidbody.velocity.y < 0.1f)
+        if (collision.rigidbody.linearVelocity.y < 0.1f)
         {
             collision.rigidbody.AddForce(new Vector2(0, upwardForce), ForceMode2D.Impulse);
             audioSource.pitch = (Random.Range(0.9f, 1.1f));

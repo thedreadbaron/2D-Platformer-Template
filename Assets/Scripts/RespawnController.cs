@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 
 public class RespawnController : MonoBehaviour
 {
     GameObject Player;
-    public CinemachineVirtualCamera virtualCamera;
+    public CinemachineCamera virtualCamera;
     public Transform currentCheckpoint;
     public AudioSource bgm;
     public ParticleSystem particleExplode;
@@ -43,7 +43,7 @@ public class RespawnController : MonoBehaviour
         Player.GetComponent<PlayerMovement>().playerControls.Disable();
         yield return new WaitForSeconds(2f);
         Player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        Player.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0,0);
         Player.GetComponent<SpriteRenderer>().enabled = false;
         Player.GetComponent<PlayerAudioEvents>().PlayAudioPoof();
         particleExplode.Play();
