@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2755395426439019237}
   - component: {fileID: 6754442845129671455}
   m_Layer: 0
-  m_Name: Solid Ground
+  m_Name: Kenney Tileset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -323,8 +323,9 @@ public class CharacterController2D : MonoBehaviour
 					animator.SetBool("IsWallSliding", false);
 					oldWallSliding = false;
 					m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
-					//canMove = false;
-				}
+                    particleJumpUp.Play();
+                    //canMove = false;
+                }
 				/*else if (dashPress && canDash)
 				{
 					isWallSliding = false;

@@ -18,6 +18,7 @@ public class RespawnController : MonoBehaviour
     private Rigidbody2D rb2D;
     private SpriteRenderer[] spriteRenderers;
     private PlayerAudioEvents playerAudioEvents;
+    private CharacterController2D characterController2D;
     private Animator animator;
 
     void Awake()
@@ -27,6 +28,7 @@ public class RespawnController : MonoBehaviour
         rb2D = Player.GetComponent<Rigidbody2D>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         playerAudioEvents = Player.GetComponent<PlayerAudioEvents>();
+        characterController2D = Player.GetComponent<CharacterController2D>();
         animator = Player.GetComponent<Animator>();
     }
 
@@ -80,7 +82,7 @@ public class RespawnController : MonoBehaviour
             }
         }
         animator.SetBool("FadeIn", true);
-        if (Player.GetComponent<CharacterController2D>().m_FacingRight == false) Player.GetComponent<CharacterController2D>().Flip();
+        if (characterController2D.m_FacingRight == false) characterController2D.Flip();
         yield return new WaitForSeconds(0.5f);
         playerMovement.playerControls.Enable();
         animator.SetBool("FadeIn", false);

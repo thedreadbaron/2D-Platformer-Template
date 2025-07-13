@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickupDoubleJump : MonoBehaviour
 {
     GameObject Player;
+    public GameObject pickupBurst;
     float Y;
     // Start is called before the first frame update
     void Start()
@@ -16,8 +17,8 @@ public class PickupDoubleJump : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Y += 50f * Time.deltaTime;
-        transform.localEulerAngles = new Vector3 (55,Y,45);
+        Y -= 200 * Time.deltaTime;
+        transform.localEulerAngles = new Vector3 (0,Y,0);
 
         if (Y > 360.0f)
         {
@@ -31,6 +32,7 @@ public class PickupDoubleJump : MonoBehaviour
         {
             Player.GetComponent<CharacterController2D>()._ToggleDoubleJump = true;
             Player.GetComponent<Inventory>().pickupSound.Play();
+            Instantiate(pickupBurst, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
     }
