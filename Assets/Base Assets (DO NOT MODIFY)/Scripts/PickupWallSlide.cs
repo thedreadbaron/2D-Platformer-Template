@@ -31,7 +31,7 @@ public class PickupWallSlide : MonoBehaviour
         if (col.gameObject == Player)
         {
             Player.GetComponent<CharacterController2D>()._ToggleWallSlide = true;
-            Player.GetComponent<Inventory>().pickupSound.Play();
+            Player.GetComponent<Inventory>().powerupSound.Play();
             Instantiate(pickupBurst, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }

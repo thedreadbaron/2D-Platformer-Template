@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6811517113068251948}
   - component: {fileID: 1616783131204306112}
   m_Layer: 0
-  m_Name: Pickup Burst
+  m_Name: Pickup Coin Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

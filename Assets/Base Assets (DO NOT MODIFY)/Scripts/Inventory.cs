@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public int pickupCount = 0;
     public AudioSource pickupSound;
+    public AudioSource powerupSound;
     public TMPro.TextMeshProUGUI pickupText;
     public Animator pickupAnimator;
 

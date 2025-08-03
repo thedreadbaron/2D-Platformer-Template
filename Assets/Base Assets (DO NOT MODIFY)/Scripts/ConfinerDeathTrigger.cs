@@ -17,7 +17,7 @@ public class ConfinerDeathTrigger : MonoBehaviour
     {
         if (col.gameObject == Player)
         {
-            StartCoroutine(respawnController.DeathSequence());
+            StartCoroutine(respawnController.DeathSequence(2f));
         }
     }
 }

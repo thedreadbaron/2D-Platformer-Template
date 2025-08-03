@@ -16,6 +16,7 @@ public class RespawnController : MonoBehaviour
 
     private PlayerMovement playerMovement;
     private Rigidbody2D rb2D;
+    private CapsuleCollider2D capsulecollider;
     private SpriteRenderer[] spriteRenderers;
     private PlayerAudioEvents playerAudioEvents;
     private CharacterController2D characterController2D;
@@ -26,6 +27,7 @@ public class RespawnController : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = Player.GetComponent<PlayerMovement>();
         rb2D = Player.GetComponent<Rigidbody2D>();
+        capsulecollider = Player.GetComponent<CapsuleCollider2D>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         playerAudioEvents = Player.GetComponent<PlayerAudioEvents>();
         characterController2D = Player.GetComponent<CharacterController2D>();
@@ -50,12 +52,13 @@ public class RespawnController : MonoBehaviour
         }
     }
 
-   public IEnumerator DeathSequence()
+   public IEnumerator DeathSequence(float delay)
     {
         fade = true;
         playerMovement.playerControls.Disable();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(delay);
         rb2D.bodyType = RigidbodyType2D.Kinematic;
+        capsulecollider.isTrigger = true;
         rb2D.linearVelocity = new Vector2(0,0);
         foreach (SpriteRenderer spriteRenderer in spriteRenderers)
         {
@@ -67,6 +70,7 @@ public class RespawnController : MonoBehaviour
         playerAudioEvents.PlayAudioPoof();
         particleExplode.Play();
         yield return new WaitForSeconds(1f);
+        capsulecollider.isTrigger = false;
         rb2D.bodyType = RigidbodyType2D.Dynamic;
         var delta = Player.transform.position - currentCheckpoint.position;
         Player.transform.position = currentCheckpoint.position;
@@ -86,5 +90,6 @@ public class RespawnController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         playerMovement.playerControls.Enable();
         animator.SetBool("FadeIn", false);
+        characterController2D.life = 1f;
     }
 }

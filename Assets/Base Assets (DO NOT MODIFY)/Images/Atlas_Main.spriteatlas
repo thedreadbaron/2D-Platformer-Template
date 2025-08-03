@@ -36,19 +36,11 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 55d2cadc9f2f794419a6867efd30fe24, type: 3}
     - {fileID: 2800000, guid: 1a6239f0d3009a943bb6357c80f1eb5c, type: 3}
     - {fileID: 2800000, guid: 816213ad17c6fc04da4a7f82104112c3, type: 3}
-    - {fileID: 2800000, guid: d77462959cceb2848b2ee70cbedbe749, type: 3}
-    - {fileID: 2800000, guid: 28cc1b04d5ebe7c49ae60ef05bfc0562, type: 3}
-    - {fileID: 2800000, guid: c38d678c66e8f104886a62f3cf874684, type: 3}
-    - {fileID: 2800000, guid: 2e5d9367a85d43f40bd50fe20aed9625, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
     - 1a6239f0d3009a943bb6357c80f1eb5c: 21300000
-    - 28cc1b04d5ebe7c49ae60ef05bfc0562: 5454232971477972358
-    - d77462959cceb2848b2ee70cbedbe749: -2981270155937328027
-    - 2e5d9367a85d43f40bd50fe20aed9625: -5760306203811904303
-    - c38d678c66e8f104886a62f3cf874684: 7097690419468857523
     - 55d2cadc9f2f794419a6867efd30fe24: 21300000
     - 816213ad17c6fc04da4a7f82104112c3: 21300000
     - 6aa7cf5fc7e17ac489ae997d02d59a29: -1832059237
@@ -317,10 +309,6 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 1a6239f0d3009a943bb6357c80f1eb5c, type: 3}
-  - {fileID: 5454232971477972358, guid: 28cc1b04d5ebe7c49ae60ef05bfc0562, type: 3}
-  - {fileID: -2981270155937328027, guid: d77462959cceb2848b2ee70cbedbe749, type: 3}
-  - {fileID: -5760306203811904303, guid: 2e5d9367a85d43f40bd50fe20aed9625, type: 3}
-  - {fileID: 7097690419468857523, guid: c38d678c66e8f104886a62f3cf874684, type: 3}
   - {fileID: 21300000, guid: 55d2cadc9f2f794419a6867efd30fe24, type: 3}
   - {fileID: 21300000, guid: 816213ad17c6fc04da4a7f82104112c3, type: 3}
   - {fileID: -1832059237, guid: 6aa7cf5fc7e17ac489ae997d02d59a29, type: 3}
@@ -588,10 +576,6 @@ SpriteAtlas:
   - {fileID: 40892100, guid: 6aa7cf5fc7e17ac489ae997d02d59a29, type: 3}
   m_PackedSpriteNamesToIndex:
   - parallax-mountain-mountains
-  - Rinn001_0
-  - Rinn000_0
-  - Rinn003_0
-  - Rinn002_0
   - parallax-mountain-montain-far
   - double_arrow_64dp_E3E3E3_FILL0_wght400_GRAD0_opsz48
   - tilesheet_complete_flipped_200

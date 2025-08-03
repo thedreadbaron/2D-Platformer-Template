@@ -14,11 +14,11 @@ public class KillTrigger : MonoBehaviour
         respawnController = Player.GetComponent<RespawnController>();
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject == Player && !triggered)
         {
-            StartCoroutine(respawnController.DeathSequence());
+            StartCoroutine(respawnController.DeathSequence(0.1f));
             triggered = true;
             StartCoroutine(DeathDelay());
         }
@@ -26,7 +26,7 @@ public class KillTrigger : MonoBehaviour
 
     public IEnumerator DeathDelay()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(1.5f);
         triggered = false;
     }
 }

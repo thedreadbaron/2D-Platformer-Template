@@ -136,4 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8cdacc6e002846e8ad15bfd57ee429f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupBurst: {fileID: 3748523961107766126, guid: d8a98ae936e49f444a06a97a4feb3fc9, type: 3}
+  pickupBurst: {fileID: 3748523961107766126, guid: 6c90ddbd215c07346bc4f4d12ed5a15a, type: 3}

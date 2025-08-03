@@ -6,6 +6,7 @@ public class FallingPlatform : MonoBehaviour
 {
     GameObject Player;
     private CapsuleCollider2D capsule_collider;
+    private CharacterController2D characterController2D;
     private Animator animator;
     private Rigidbody2D rb;
     Vector3 startPos;
@@ -17,9 +18,10 @@ public class FallingPlatform : MonoBehaviour
 
     private void Awake()
     {
-        capsule_collider = GetComponent<CapsuleCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        capsule_collider = GetComponent<CapsuleCollider2D>();
+        characterController2D = Player.GetComponent<CharacterController2D>();
+        rb = GetComponent<Rigidbody2D>();       
         animator = GetComponent<Animator>();
         startPos = transform.localPosition;
         startRot = transform.localEulerAngles;
@@ -34,9 +36,9 @@ public class FallingPlatform : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
-        if (!triggered && collision.rigidbody.linearVelocity.y < 0f)
+        if (!triggered && characterController2D.m_Grounded)
         {
                 StartCoroutine(PlatFall());
                 triggered = true;

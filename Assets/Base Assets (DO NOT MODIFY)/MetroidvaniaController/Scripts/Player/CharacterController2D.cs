@@ -19,7 +19,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private LayerMask m_WhatIsWall;
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
-	[SerializeField] private Transform m_WallCheck;								//Posicion que controla si el personaje toca una pared
+	[SerializeField] private Transform m_WallCheck;                             //Posicion que controla si el personaje toca una pared
+
+	private RespawnController respawnController;
 
 	const float k_GroundedRadius = .15f; // Radius of the overlap circle to determine if grounded
 	private bool groundCheckToggle = true;
@@ -79,6 +81,7 @@ public class CharacterController2D : MonoBehaviour
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		capsule_collider = GetComponent<CapsuleCollider2D>();
+		respawnController = GetComponent<RespawnController>();
 
 		if (OnFallEvent == null)
 			OnFallEvent = new UnityEvent();
@@ -119,7 +122,7 @@ public class CharacterController2D : MonoBehaviour
 
 		if (!m_Grounded)
 		{
-			capsule_collider.size = new Vector2(0.8f, 1.4f);
+			capsule_collider.size = new Vector2(0.75f, 1.4f);
 			capsule_collider.offset = new Vector2(0, -0.3f);
 			OnFallEvent.Invoke();
 			Collider2D[] collidersWall = Physics2D.OverlapCircleAll(m_WallCheck.position, k_GroundedRadius, m_WhatIsWall);
@@ -134,7 +137,7 @@ public class CharacterController2D : MonoBehaviour
 			prevVelocityX = m_Rigidbody2D.linearVelocity.x;
 		}
 		else {
-			capsule_collider.size = new Vector2(0.8f, 1.7f);
+			capsule_collider.size = new Vector2(0.75f, 1.7f);
 			capsule_collider.offset = new Vector2(0, -0.18f);
 		}
 
@@ -364,19 +367,13 @@ public class CharacterController2D : MonoBehaviour
 		if (!invincible)
 		{
 			animator.SetBool("Hit", true);
-			life -= damage;
-			Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f ;
+            //life -= damage;
+            StartCoroutine(respawnController.DeathSequence(0.1f));
+            Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f ;
 			m_Rigidbody2D.linearVelocity = Vector2.zero;
-			m_Rigidbody2D.AddForce(damageDir * 10);
-			if (life <= 0)
-			{
-				StartCoroutine(WaitToDead());
-			}
-			else
-			{
-				StartCoroutine(Stun(0.25f));
-				StartCoroutine(MakeInvincible(1f));
-			}
+			m_Rigidbody2D.AddForce(damageDir * 10);			
+			StartCoroutine(Stun(0.25f));
+			StartCoroutine(MakeInvincible(1f));
 		}
 	}
 
