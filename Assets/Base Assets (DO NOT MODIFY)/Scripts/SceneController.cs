@@ -5,6 +5,7 @@ public class SceneController : MonoBehaviour
 {
     private GameObject levelSelectScene;
     private Animator[] animators;
+    public GameObject blackout;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        blackout.SetActive(true);
         foreach (Animator animator in animators)
         {
             animator.Rebind();
@@ -36,6 +38,7 @@ public class SceneController : MonoBehaviour
     public void UnloadSceneAsync(Scene scene)
     {
         SceneManager.UnloadSceneAsync(scene);
+        blackout.SetActive(false);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
