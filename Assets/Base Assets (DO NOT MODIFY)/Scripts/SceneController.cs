@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     private GameObject levelSelectScene;
+    private Animator[] animators;
 
     void Start()
     {
         SceneManager.sceneUnloaded += OnSceneUnloaded;
         levelSelectScene = this.gameObject;
+        animators = GetComponentsInChildren<Animator>();
     }
 
     void OnEnable()
@@ -23,6 +25,11 @@ public class SceneController : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        foreach (Animator animator in animators)
+        {
+            animator.Rebind();
+            animator.Update(0f);
+        }
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);       
     }
 
@@ -33,7 +40,10 @@ public class SceneController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        levelSelectScene.SetActive(false);
+        if (levelSelectScene != null)
+        {
+            levelSelectScene.SetActive(false);
+        }      
         SceneManager.SetActiveScene(scene);
     }
 

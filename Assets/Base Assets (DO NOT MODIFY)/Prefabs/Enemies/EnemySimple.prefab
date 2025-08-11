@@ -112,6 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 10
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 72
   turnLayerMask:
     serializedVersion: 2
     m_Bits: 520

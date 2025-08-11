@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour {
 	private bool isObstacle;
 	private Transform fallCheck;
 	private Transform wallCheck;
-	public LayerMask turnLayerMask;
+    public LayerMask groundLayerMask;
+    public LayerMask turnLayerMask;
 	private Rigidbody2D rb;
 
 	private bool facingRight = true;
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour {
 			StartCoroutine(DestroyEnemy());
 		}
 
-		isPlat = Physics2D.OverlapCircle(fallCheck.position, .2f, 1 << LayerMask.NameToLayer("Ground"));
+		isPlat = Physics2D.OverlapCircle(fallCheck.position, .2f, groundLayerMask);
 		isObstacle = Physics2D.OverlapCircle(wallCheck.position, .2f, turnLayerMask);
 
 		if (!isHitted && life > 0 && Mathf.Abs(rb.linearVelocity.y) < 0.5f)

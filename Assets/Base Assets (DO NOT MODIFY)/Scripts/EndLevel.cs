@@ -31,7 +31,6 @@ public class EndLevel : MonoBehaviour
     {
         if (col.gameObject == Player && !triggered)
         {
-            //respawnController.currentCheckpoint = transform;
             flagInactive.gameObject.SetActive(false);
             flagActive.gameObject.SetActive(true);
             StartCoroutine(Fireworks());
@@ -42,6 +41,16 @@ public class EndLevel : MonoBehaviour
 
     IEnumerator Fireworks()
     {
+        Instantiate(checkpointBurst, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(1f, 2f), 0), transform.rotation);
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(checkpointBurst, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(1f, 2f), 0), transform.rotation);
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(checkpointBurst, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(1f, 2f), 0), transform.rotation);
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(checkpointBurst, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(1f, 2f), 0), transform.rotation);
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(checkpointBurst, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(1f, 2f), 0), transform.rotation);
+        yield return new WaitForSeconds(0.1f);
         Instantiate(checkpointBurst, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(1f, 2f), 0), transform.rotation);
         yield return new WaitForSeconds(0.1f);
         Instantiate(checkpointBurst, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(1f, 2f), 0), transform.rotation);
